@@ -8,4 +8,6 @@ public interface MatchService extends SuperService<Match, Integer> {
 
 	List<Match> createRoundMatches(Integer roundId);
 
+	Integer setMastchWinner(Integer matchId, Integer winnerId);
+
 }

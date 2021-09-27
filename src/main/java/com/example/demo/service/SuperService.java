@@ -13,12 +13,12 @@ public interface SuperService<EN extends SuperEntity, PK extends Serializable> {
 
 	EN update(PK id, EN t);
 
+	EN update(EN t);
+
 	EN create(EN e);
 
 	void delete(EN e);
 
 	void delete(PK id);
-
- 
 
 }

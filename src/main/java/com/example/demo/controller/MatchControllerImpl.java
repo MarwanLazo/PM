@@ -26,7 +26,13 @@ public class MatchControllerImpl extends
 
 		List<Match> match = service.createRoundMatches(roundId);
 		List<MatchModel> model = mapper.mapToModel(match);
-		return new ResponseEntity<List<MatchModel>>(model, HttpStatus.OK);
+		return new ResponseEntity<>(model, HttpStatus.OK);
+	}
+
+	@Override
+	public ResponseEntity<Integer> setMatchWinner(Integer matchId, Integer winnerId) {
+		winnerId = service.setMastchWinner(matchId, winnerId);
+		return new ResponseEntity<>(winnerId, HttpStatus.OK);
 	}
 
 }

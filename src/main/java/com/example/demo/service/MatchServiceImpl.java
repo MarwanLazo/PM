@@ -62,4 +62,16 @@ public class MatchServiceImpl extends SuperServiceImpl<Match, Integer, MatchRepo
 
 	}
 
+	@Override
+	public Integer setMastchWinner(Integer matchId, Integer winnerId) {
+		Match match = findById(matchId);
+		if (match.getPartOne().getId().equals(winnerId)) {
+			match.setWinner(match.getPartOne());
+		} else {
+			match.setWinner(match.getPartTwo());
+		}
+		match.setPlayed(true);
+		return update(match).getId();
+	}
+
 }

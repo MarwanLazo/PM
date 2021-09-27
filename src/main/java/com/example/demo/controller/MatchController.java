@@ -12,4 +12,8 @@ public interface MatchController extends SuperController<MatchModel, Integer> {
 
 	@GetMapping({ "createRoundMatches/{roundId}" })
 	ResponseEntity<List<MatchModel>> createRoundMatches(@PathVariable Integer roundId);
+
+	@GetMapping({ "setMatchWinner/{matchId}/{winnerId}" })
+	ResponseEntity<Integer> setMatchWinner(@PathVariable("matchId") Integer matchId,
+			@PathVariable("winnerId") Integer winnerId);
 }
