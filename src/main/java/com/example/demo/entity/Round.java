@@ -49,8 +49,8 @@ public class Round extends SuperEntity {
 	@Column(name = "round_rank")
 	private Integer rank;
 
-//	@Formula("SELECT SUM(group_of_matches) from groups")
-//	@Column(name = "round_no_of_matches")
-//	private Integer noOfMatches;
+	// @Formula("SELECT SUM(group_of_matches) from groups")
+	// @Column(name = "round_no_of_matches")
+	// private Integer noOfMatches;
 
 }

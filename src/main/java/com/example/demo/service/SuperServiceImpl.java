@@ -33,7 +33,7 @@ public class SuperServiceImpl<EN extends SuperEntity, PK extends Serializable, J
 
 	@Override
 	public EN update(EN e) {
-		return update(null, e);
+		return repo.save(e);
 	}
 
 	@Override

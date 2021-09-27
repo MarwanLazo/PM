@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import java.util.Optional;
+import java.util.concurrent.Executor;
 import java.util.stream.Stream;
 
 import org.modelmapper.ModelMapper;
@@ -10,6 +11,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
+import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 import com.example.demo.entity.Round;
 import com.example.demo.service.RoundService;
@@ -17,6 +20,7 @@ import com.example.demo.service.RoundService;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
+@EnableAsync
 @Configuration
 @EnableJpaAuditing(auditorAwareRef = "auditorAware")
 class AppConfig {
@@ -45,6 +49,11 @@ class AppConfig {
                     new Round("Final Round", "Final Round :: THE CHAMPION ", 5)).map(service::create)
                     .forEach(rnd -> log.info("{},{},{}", rnd, rnd.getCreateBy(), rnd.getCreateDate()));
         };
+    }
+
+    @Bean(name = "executor")
+    public Executor executor() {
+        return new ThreadPoolTaskExecutor();
     }
 
 }

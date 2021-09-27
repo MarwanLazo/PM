@@ -36,6 +36,8 @@ public class ParticipantServiceImpl extends SuperServiceImpl<Participant, Intege
 
 	@Override
 	public Participant update(Integer id, Participant e) {
+		if (id == null)
+			return update(e);
 		Participant saved = findById(id);
 		mapper.map(e, saved);
 		return super.update(id, saved);

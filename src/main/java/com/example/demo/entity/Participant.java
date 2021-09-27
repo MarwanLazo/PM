@@ -19,8 +19,8 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 @Data
-@EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor
+@EqualsAndHashCode(callSuper = false, of = { "id", "name" })
 @RequiredArgsConstructor
 
 @Table(name = "tb_participant")
